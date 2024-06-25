@@ -1,0 +1,50 @@
+<header class="container-fluid fixed top primary_colour">
+  <div class="row">
+    <div class="col-8">
+      <!-- CLUB LOGO -->
+      {% if club_details.display_logo %}
+      <img
+        src="{{ club_details.logo.url }}"
+        alt="{{ club_details.club_name }} Logo"
+        class="logo d-inline"
+      />
+      {% endif %}
+      <!-- CLUB NAME -->
+      {% if club_details.display_club_name %}
+      <h1 class="m-2 d-inline">{{ club_details.club_name }}</h1>
+      {% endif %}
+    </div>
+    <!-- ACCOUNT ICON -->
+    <div class="col-4 text-end">
+      <div class="m-3">
+        <a href="" class="fit-content text-dark">
+          <i class="fa-solid fa-user fa-2xl"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- NAV BAR -->
+  <nav>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'home' %}"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tables</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Book</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'edit_club_details' %}"
+          >Edit club details</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>

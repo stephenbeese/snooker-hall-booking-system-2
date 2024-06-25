@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- <h1>{{ club_details.club_name }}</h1> -->
+<p>{{ club_details.description }}</p>
+<p>{{ club_details.tagline }}</p>
+<!-- <p>{{ club_details.primary_colour }}</p> -->
+<!-- <p>{{ club_details.secondary_colour }}</p> -->
+
+<div class="row">
+  <div class="col-6">
+    <h3>Address</h3>
+    <p>{{ club_details.address_line1 }}</p>
+    <p>{{ club_details.address_line2 }}</p>
+    <p>{{ club_details.city }}</p>
+    <p>{{ club_details.postcode }}</p>
+  </div>
+  <div class="col-6"></div>
+</div>
+
+{% endblock %}

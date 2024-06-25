@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<h1 class="text-center my-3">Edit Club Details</h1>
+<form method="post" enctype="multipart/form-data" class="w-50 mx-auto">
+  {% csrf_token %}
+  <!-- {{ form.as_p }} -->
+  {% for field in form %} {{ field | as_crispy_field }} {% endfor %}
+  <button type="submit" class="btn btn-dark">Save</button>
+</form>
+{% endblock %}
