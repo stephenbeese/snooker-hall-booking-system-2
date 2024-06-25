@@ -1,14 +1,15 @@
 .primary_colour {
     background-color: {{ club_details.primary_colour }} !important;
-  }
-  .secondary_colour {
+}
+
+.secondary_colour {
     background-color: {{ club_details.secondary_colour }} !important;
-  }
+}
 
-  .primary_text_colour {
+.primary_text_colour {
     color: {{ club_details.primary_text_colour }} !important;
-  }
+}
 
-  .secondary_text_colour {
+.secondary_text_colour {
     color: {{ club_details.secondary_text_colour }} !important;
-  }
+}
