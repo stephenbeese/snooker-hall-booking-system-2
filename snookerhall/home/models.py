@@ -1,9 +1,12 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class ClubDetailsManager(models.Manager):
     """
     Ensures only one instance can be made
     """
+
     def get_instance(self):
         if self.exists():
             return self.get()
@@ -14,6 +17,7 @@ class ClubDetails(models.Model):
     """
     Model to store club information
     """
+
     club_name = models.CharField(max_length=30)
     logo = models.ImageField(null=True, blank=True)
     home_image = models.ImageField(null=True, blank=True)
@@ -30,6 +34,8 @@ class ClubDetails(models.Model):
     city = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=50, blank=True)
     postcode = models.CharField(max_length=8, blank=True)
+    phone_number = PhoneNumberField(blank=True)
+    email = models.EmailField(blank=True)
 
     objects = ClubDetailsManager()
 
@@ -41,5 +47,3 @@ class ClubDetails(models.Model):
 
     def __str__(self):
         return str(self.club_name)
-    
-
