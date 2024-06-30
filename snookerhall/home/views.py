@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -23,6 +24,7 @@ def club_details_view(request):
         form = ClubDetailsForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Club Details updated successfully")
             return redirect("home")
     else:
         form = ClubDetailsForm()
@@ -38,7 +40,10 @@ def edit_club_details(request):
         form = ClubDetailsForm(request.POST, request.FILES, instance=club_details)
         if form.is_valid():
             form.save()
+            messages.success(request, "Club Details updated successfully")
             return redirect("home")
+        else:
+            messages.error(request, "Failed to update. The form is not valid.")
     else:
         form = ClubDetailsForm(instance=club_details)
     return render(request, "home/edit_club_details.html", {"form": form})
