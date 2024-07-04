@@ -13,3 +13,12 @@
 .secondary_text_colour {
     color: {{ club_details.secondary_text_colour }} !important;
 }
+
+.home-image {
+    background-image: url("{{ club_details.home_image.url }}");
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
