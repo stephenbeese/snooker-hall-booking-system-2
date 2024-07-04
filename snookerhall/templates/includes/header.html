@@ -1,4 +1,4 @@
-<header class="container-fluid fixed top primary_colour">
+<header class="container-fluid header-colour">
   <div class="row">
     <div class="col-8">
       <!-- CLUB LOGO -->
@@ -11,7 +11,7 @@
       {% endif %}
       <!-- CLUB NAME -->
       {% if club_details.display_club_name %}
-      <h1 class="m-2 d-inline">{{ club_details.club_name }}</h1>
+      <h1 class="m-2 d-inline header-text-colour">{{ club_details.club_name }}</h1>
       {% endif %}
     </div>
     <!-- ACCOUNT ICON -->
@@ -19,7 +19,7 @@
       <div class="m-3">
         {% if request.user.is_authenticated %}
         <div class="dropdown">
-          <a class="fit-content text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="fit-content header-text-colour" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-user fa-2xl"></i>
           </a>
 
@@ -38,8 +38,8 @@
         
         </div>
         {% else %}
-        <a href="{% url 'account_login' %}" class="text-white">LOGIN</a>
-        <a href="{% url 'account_signup' %}" class="text-white">SIGNUP</a>
+        <a href="{% url 'account_login' %}" class="header-text-colour">LOGIN</a>
+        <a href="{% url 'account_signup' %}" class="header-text-colour">SIGNUP</a>
         {% endif %}
       </div>
     </div>
@@ -48,15 +48,15 @@
   <nav>
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url 'home' %}"
+        <a class="nav-link active header-text-colour" aria-current="page" href="{% url 'home' %}"
           >Home</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tables</a>
+        <a class="nav-link header-text-colour" href="#">Tables</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Book</a>
+        <a class="nav-link header-text-colour" href="#">Book</a>
       </li>
     </ul>
   </nav>
