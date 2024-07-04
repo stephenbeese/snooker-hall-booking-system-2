@@ -1,0 +1,25 @@
+.home-image-div {
+    background-color: red;
+    width: fit-content;
+    height: fit-content;
+    opacity: 0.8;
+    border-radius: 15px;
+}
+
+.home-image-div h2 {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.home-image-div p {
+    opacity: 1;
+    text-align: center;
+    margin: 10px;
+}
+
+.home-image-div a {
+    height: fit-content;
+    text-align: center;
+    width: fit-content;
+    margin: 10px;
+}
