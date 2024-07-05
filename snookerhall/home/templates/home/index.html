@@ -23,9 +23,9 @@
 <hr>
 
 <div class="container text-center my-4">
-  <div class="row align-items-center">
-    <div class="col-12">
-      <h3 class="text-decoration-underline">About Us</h3>
+  <div class="row justify-content-evenly">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h3 class="text-decoration-underline fw-bold">About Us</h3>
       <p>{{ club_details.description }}</p>
     </div>
   </div>
@@ -35,21 +35,20 @@
 
 <div class="container text-center my-4">
   <div class="row justify-content-evenly book-with-us secondary-text-colour">
-    <h3 class="col-12 text-decoration-underline">Why Book with Us?</h3>
-    <div class="col-5 m-3 secondary-colour">
+    <h3 class="col-12 text-decoration-underline primary-text-colour fw-bold">Why Book with Us?</h3>
+    <div class="col-10 col-md-5 m-3 secondary-colour">
       <h4 class="m-3 fw-bold">Convenient Online booking</h4>
-      <!-- <hr class="w-50 mx-auto"> -->
       <p>Reserve your table anytime, anywhere with our user-friendly booking platform. No more waiting in line or making phone calls - simply select your preferred time slot, and you're all set.</p>
     </div>
-    <div class="col-5 m-3 secondary-colour">
+    <div class="col-10 col-md-5 m-3 secondary-colour">
       <h4 class="m-3 fw-bold">Wide Range of Facilities</h4>
     <p>Enjoy access to top-notch snooker and pool tables, a comfortable lounge area, and a fully stocked bar. Our facilities are designed to provide you with the best playing experience.</p>
     </div>
-    <div class="col-5 m-3 secondary-colour">
+    <div class="col-10 col-md-5 m-3 secondary-colour">
       <h4 class="m-3 fw-bold">Competitive Pricing</h4>
     <p>We offer competitive rates and flexible booking options to fit any schedule. Take advantage of our special promotions and membership benefits for even greater value.</p>
     </div>
-    <div class="col-5 m-3 secondary-colour">
+    <div class="col-10 col-md-5 m-3 secondary-colour">
       <h4 class="m-3 fw-bold">Friendly Atmosphere</h4>
       <p>Flukes is more than just a place to play snooker and pool – it's a community. Our friendly staff and welcoming environment make it the perfect spot to unwind and have fun.</p>
     </div>
@@ -61,17 +60,17 @@
 <div class="container text-center my-4">
   <div class="row justify-content-evenly secondary-text-colour how-to-book">
     <div class="col-12">
-      <h3 class="text-decoration-underline mb-4">How to Book Your Table</h3>
+      <h3 class="text-decoration-underline mb-4 primary-text-colour fw-bold">How to Book Your Table</h3>
     </div>
-    <div class="col-3 secondary-colour mx-1">
+    <div class="col-10 col-md-3 my-1 secondary-colour">
       <h4 class="m-2 text-decoration-underline">Choose Your Table and Time</h4>
       <p>Browse available tables and select a time slot that works for you.</p>
     </div>
-    <div class="col-3 secondary-colour mx-1">
+    <div class="col-10 col-md-3 my-1 secondary-colour">
       <h4 class="m-2 text-decoration-underline">Secure Your Reservation</h4>
       <p>Provide your details and confirm your booking with our secure payment system.</p>
     </div>
-    <div class="col-3 secondary-colour mx-1">
+    <div class="col-10 col-md-3 my-1 secondary-colour">
       <h4 class="m-2 text-decoration-underline">Enjoy Your Game!</h4>
       <p>Show up at your reserved time, and your table will be ready for you. It's that simple!</p>
     </div>
@@ -81,9 +80,9 @@
 <hr>
 
 <div class="container text-center my-4">
-  <div class="row align-items-center">
-    <div class="col-12">
-      <h4 class="text-decoration-underline">Join Our Community</h4>
+  <div class="row justify-content-evenly">
+    <div class="col-12 col-md-8 col-lg-6">
+      <h4 class="text-decoration-underline fw-bold">Join Our Community</h4>
       <p>Stay up-to-date with the latest news, events, and promotions by subscribing to our newsletter. Follow us on social media for exclusive offers and updates.</p>
     </div>
   </div>
@@ -92,16 +91,16 @@
 <hr>
 
 <div class="container text-center mt-4 pb-4">
-  <div class="row align-items-center">
-    <div class="col-6 text-start address">
-      <h5 class="text-decoration-underline">Address</h5>
+  <div class="row justify-content-evenly">
+    <div class="col-5 text-start address">
+      <h5 class="text-decoration-underline fw-bold">Address</h5>
       <p>{{ club_details.address_line1 }}</p>
       <p>{{ club_details.address_line2 }}</p>
       <p>{{ club_details.city }}</p>
       <p>{{ club_details.postcode }}</p>
     </div>
-    <div class="col-6">
-      <h5 class="text-decoration-underline">Contact Us</h5>
+    <div class="col-5">
+      <h5 class="text-decoration-underline fw-bold">Contact Us</h5>
       <p>Have questions? Feel free to get in touch with us at {{ club_details.phone_number }}
         or email us at {{ club_details.email }}.</p>
     </div>

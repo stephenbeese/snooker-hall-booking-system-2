@@ -38,3 +38,9 @@
 .footer-text-colour {
     color: {{ club_details.footer_text_colour }} !important;
 }
+
+#nav-item:hover {
+    font-weight: bold;
+    text-decoration: underline;
+    color: {{ club_details.secondary_colour }} !important;
+}
