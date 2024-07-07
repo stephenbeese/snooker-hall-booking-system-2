@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h3>Opening Hours</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">Opening Time</th>
+        <th scope="col">Closing Time</th>
+        <th scope="col">Closed?</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for opening_hour in opening_hours %}
+            <tr>
+                <th scope="row">{{ opening_hour.get_day_of_week_display }}</th>
+                <td>{{ opening_hour.opening_time }}</td>
+                <td>{{ opening_hour.closing_time }}</td>
+                <td>{{ opening_hour.closed }}</td>
+                <td>
+                    <a class="btn btn-dark" href="{% url 'edit_opening_hours' opening_hour.id %}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% if opening_hours.length >= 7 %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ClubDetails
+from .models import ClubDetails, OpeningHours
 from .widgets import ColourPickerWidget
 
 
@@ -23,3 +23,13 @@ class ClubDetailsForm(forms.ModelForm):
         if ClubDetails.objects.exclude(pk=self.instance.pk).exists():
             raise forms.ValidationError("There can be only one ClubDetails instance")
         return cleaned_data
+
+
+class OpeningHoursForm(forms.ModelForm):
+    class Meta:
+        model = OpeningHours
+        fields = "__all__"
+        widgets = {
+            "opening_time": forms.TimeInput(attrs={"type": "time"}),
+            "closing_time": forms.TimeInput(attrs={"type": "time"}),
+        }

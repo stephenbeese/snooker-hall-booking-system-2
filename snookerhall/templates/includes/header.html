@@ -29,8 +29,12 @@
             <li><hr class="dropdown-divider"></li>
             {% if request.user.is_superuser %}
             <li><a class="dropdown-item" href="{% url 'edit_club_details' %}"
-              >Edit club details</a
+              >Edit Club Details</a
             ></li>
+            <li><a class="dropdown-item" href="{% url 'manage_opening_hours' %}"
+              >Edit Opening Times</a
+            ></li>
+            
             <li><hr class="dropdown-divider"></li>
             {% endif %}
             <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>

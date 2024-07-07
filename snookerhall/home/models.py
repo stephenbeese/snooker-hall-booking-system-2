@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils.translation import gettext_lazy as _
 
 
 class ClubDetailsManager(models.Manager):
@@ -51,3 +52,30 @@ class ClubDetails(models.Model):
 
     def __str__(self):
         return str(self.club_name)
+
+
+class OpeningHours(models.Model):
+    """
+    Model to store club opening hours for each day of the week
+    """
+
+    DAY_CHOICES = (
+        (1, _("Monday")),
+        (2, _("Tuesday")),
+        (3, _("Wednesday")),
+        (4, _("Thursday")),
+        (5, _("Friday")),
+        (6, _("Saturday")),
+        (7, _("Sunday")),
+    )
+    day_of_week = models.IntegerField(choices=DAY_CHOICES, unique=True)
+    opening_time = models.TimeField(null=True, blank=True)
+    closing_time = models.TimeField(null=True, blank=True)
+    closed = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = _("Opening Time")
+        verbose_name_plural = _("Opening Times")
+
+    def __str__(self):
+        return f"{self.get_day_of_week_display()} - {self.opening_time} to {self.closing_time}"
