@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="text-center py-3 text-decoration-underline fw-bold">Add Table Type</h2>
+
+<div class="row justify-content-evenly">
+  <div class="col-11">
+    <h4 class="fw-bold">Current Table Types:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Table Type</th>
+          <th scope="col">Description</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for type in table_types %}
+        <tr>
+          <th scope="row">{{ type.name }}</th>
+          <td>{{ type.description }}</td>
+          <td><a href="{% url 'edit_table_type' type.pk %}" class="btn btn-dark">Edit</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="row justify-content-evenly">
+  <div class="col-10">
+    <form method="post">
+      {% csrf_token %}
+    
+      {% for field in form %}
+      {{ field | as_crispy_field }}
+      {% endfor %}
+      <button class="btn btn-dark" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
