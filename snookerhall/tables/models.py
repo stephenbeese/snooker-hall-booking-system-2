@@ -16,13 +16,5 @@ class Table(models.Model):
     is_available = models.BooleanField(default=True)
     table_image = models.ImageField(null=True, blank=True)
 
-    # class Meta:
-    #     constraints = [
-    #         models.UniqueConstraint(
-    #             fields=["table_number", "table_type"],
-    #             name="unique_table_number_table_type",
-    #         )
-    # ]
-
     def __str__(self):
         return f"Table {self.table_number} - {self.table_type}"

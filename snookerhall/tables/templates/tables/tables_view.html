@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tables/tables.css' %}">
+{% endblock %}
+
+{% block title %}Tables{% endblock %}
+
+{% block content %}
+<h1 class="fw-bold text-center text-decoration-underline py-3">Tables</h1>
+{% for table_type, tables in tables_by_type.items %}
+    {% if tables %}
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center fw-bold">{{ table_type.name }} Tables</h2>
+            </div>
+            <div class="col-12">
+                <p class="text-center">{{ table_type.description }}</p>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center py-5">
+            {% for table in tables %}
+            <div class="col-md-4 mb-4">
+                <div class="card mx-auto" style="width: 18rem;">
+                    {% if table.table_image %}
+                    <img src="{{ table.table_image.url }}" class="card-img-top table-image" alt="{{ table.table_type }} Table {{ table.table_number }} Image">
+                    {% else %}
+                    <img src="{{ MEDIA_URL }}no-image-placeholder.png" class="card-img-top table-image" alt="{{ table.table_type }} Table {{ table.table_number }} Placeholder Image">
+                    {% endif %}
+                    <div class="card-body secondary-colour secondary-text-colour">
+                    <h5 class="card-title">Table {{ table.table_number }} - {{ table.table_type }}</h5>
+                    <p class="card-text">£{{ table.price|floatformat:2 }} p/h</p>
+                    <a href="#" class="btn btn-dark">Book</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endfor %}
+
+{% endblock %}

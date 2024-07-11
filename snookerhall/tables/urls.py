@@ -7,4 +7,5 @@ urlpatterns = [
     path("add_table/", views.add_table, name="add_table"),
     path("edit_table/<int:pk>/", views.edit_table, name="edit_table"),
     path("delete_table/<int:pk>/", views.delete_table, name="delete_table"),
+    path("", views.tables_view, name="tables_view"),
 ]

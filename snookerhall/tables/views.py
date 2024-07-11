@@ -100,3 +100,15 @@ def delete_table(request, pk):
         messages.success(request, "Table deleted successfully")
         return redirect("add_table")
     return render(request, "tables/delete_table.html", {"table": table})
+
+
+def tables_view(request):
+    table_types = TableType.objects.all()
+    tables_by_type = {}
+
+    for table_type in table_types:
+        tables = Table.objects.filter(table_type=table_type)
+        tables_by_type[table_type] = tables
+
+    context = {"tables_by_type": tables_by_type}
+    return render(request, "tables/tables_view.html", context)
