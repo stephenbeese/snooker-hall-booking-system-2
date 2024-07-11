@@ -58,9 +58,9 @@ def add_table(request):
             messages.success(request, "Table added successfully")
             return redirect("add_table")
         else:
-            messages.error(
-                request, "There was an error adding this table, please try again."
-            )
+            for error_list in form.errors.values():
+                for error in error_list:
+                    messages.error(request, error)
     else:
         form = TableForm()
 
@@ -80,10 +80,9 @@ def edit_table(request, pk):
             messages.success(request, "Table updated successfully")
             return redirect("add_table")
         else:
-            messages.error(
-                request,
-                "There was a problem updating the table, please try again.",
-            )
+            for error_list in form.errors.values():
+                for error in error_list:
+                    messages.error(request, error)
     else:
         form = TableForm(instance=table)
 
