@@ -3,7 +3,9 @@ from .models import ClubDetails, OpeningHours
 from .widgets import ColourPickerWidget
 
 
+# Define a form class for ClubDetails model
 class ClubDetailsForm(forms.ModelForm):
+    # Meta class to specify model and fields for the form
     class Meta:
         model = ClubDetails
         fields = "__all__"
@@ -18,8 +20,10 @@ class ClubDetailsForm(forms.ModelForm):
             "footer_text_colour": ColourPickerWidget(),
         }
 
+    # Override the clean method to add custom validation
     def clean(self):
-        cleaned_data = super().clean()
+        cleaned_data = super().clean()  # Get the cleaned data from the for
+
         if ClubDetails.objects.exclude(pk=self.instance.pk).exists():
             raise forms.ValidationError("There can be only one ClubDetails instance")
         return cleaned_data
