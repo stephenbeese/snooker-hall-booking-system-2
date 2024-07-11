@@ -1,0 +1,48 @@
+<style>
+    .home-image {
+        background-image: url("{{ club_details.home_image.url }}");
+        margin-left: calc(50% - 50vw);
+        width: 100vw;
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .primary-colour {
+        background-color: {{ club_details.primary_colour }} !important;
+    }
+
+    .secondary-colour {
+        background-color: {{ club_details.secondary_colour }} !important;
+    }
+
+    .header-colour {
+        background-color: {{ club_details.header_colour }} !important;
+    }
+
+    .footer-colour {
+        background-color: {{ club_details.footer_colour }} !important;
+    }
+
+    .primary-text-colour {
+        color: {{ club_details.primary_text_colour }} !important;
+    }
+
+    .secondary-text-colour {
+        color: {{ club_details.secondary_text_colour }} !important;
+    }
+
+    .header-text-colour {
+        color: {{ club_details.header_text_colour }} !important;
+    }
+
+    .footer-text-colour {
+        color: {{ club_details.footer_text_colour }} !important;
+    }
+
+    #nav-item:hover {
+        font-weight: bold;
+        text-decoration: underline;
+        color: {{ club_details.secondary_colour }} !important;
+    }
+</style>

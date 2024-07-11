@@ -7,7 +7,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% url 'dynamic_styles' %}" />
     {% block extra_css %}{% endblock %}
 
     <!-- BOOTSTRAP -->
@@ -32,6 +31,7 @@
     <title>{{ club_details.club_name }} | {% block title %} {% endblock %}</title>
   </head>
   <body class="d-flex flex-column h-100">
+    {% include 'includes/dynamic_styles.html'%}
     {% include 'includes/header.html' %}
 
     {% include 'includes/messages.html' %}
