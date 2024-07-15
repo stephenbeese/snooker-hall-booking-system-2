@@ -32,12 +32,14 @@
   </head>
   <body class="d-flex flex-column h-100">
     {% include 'includes/dynamic_styles.html'%}
+
     {% include 'includes/header.html' %}
 
     {% include 'includes/messages.html' %}
 
-    <main class="flex-shrink-0">
-      <div class="container-fluid primary-colour primary-text-colour">{% block content %} {% endblock %}</div>
+    <!-- <main class="flex-shrink-0"> -->
+    <main class="flex-grow-1 d-flex flex-column">
+      <div class="container-fluid primary-colour primary-text-colour flex-grow-1">{% block content %} {% endblock %}</div>
     </main>
 
     {% include 'includes/footer.html' %}
