@@ -49,6 +49,15 @@ def edit_table_type_view(request, pk):
     return render(request, "tables/edit_table_type.html", context)
 
 
+def delete_table_type(request, pk):
+    table_type = get_object_or_404(TableType, pk=pk)
+    if request.method == "POST":
+        table_type.delete()
+        messages.success(request, "Table Type deleted successfully")
+        return redirect("add_table_type")
+    return render(request, "tables/delete_table_type.html", {"table_type": table_type})
+
+
 def add_table(request):
     tables = Table.objects.all()
     if request.method == "POST":
