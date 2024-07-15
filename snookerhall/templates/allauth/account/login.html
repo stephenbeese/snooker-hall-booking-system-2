@@ -1,20 +1,52 @@
 {% extends "account/base_entrance.html" %}
 {% load i18n %}
 {% load allauth account %}
+{% load crispy_forms_tags %}
 
-{% block head_title %}
+
+
+{% block title %}
     {% trans "Sign In" %}
-{% endblock head_title %}
+{% endblock title %}
+
+{% block style_tag %}
+<style>
+    form a {
+        color: {{ club_details.secondary_text_colour }} !important;
+    }
+
+    form a:hover {
+        font-weight: bold;
+    }
+
+    .link-hover:hover {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
 
 {% block content %}
-    <h1>{% trans "Sign In" %}</h1>
-    <p>
-        If you have not created an account yet, please <a href="{% url 'account_signup' %}">sign up</a> first.
-    </p>
-    <form method="post" action="{% url 'account_login' %}" class="entrance login">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ redirect_field }}
-        <button type="submit" class="prominent login">{% trans "Sign In" %}</button>
-    </form>
+<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="row w-50 mx-auto secondary-colour secondary-text-colour rounded justify-content-center">
+        <div class="col-10 text-center">
+            <h1 class="fw-bold text-decoration-underline p-3">{% trans "Sign In" %}</h1>
+        </div>
+        <div class="col-10">
+            <p>
+                If you have not created an account yet, please <a class="secondary-text-colour link-hover" href="{% url 'account_signup' %}">sign up</a> first.
+            </p>
+        </div>
+        <div class="col-10">
+            <form method="post" action="{% url 'account_login' %}" class="entrance login secondary-text-colour mx-auto">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field | as_crispy_field }}
+                {% endfor %}
+                {{ redirect_field }}
+                <button class="btn btn-dark mb-3" type="submit" class="prominent login">{% trans "Sign In" %}</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}
