@@ -2,16 +2,28 @@
 {% load allauth i18n %}
 {% load i18n %}
 
-{% block head_title %}
-    {% trans "Sign Out" %}
-{% endblock head_title %}
+{% block title %}
+    Sign Out
+{% endblock title %}
 
 {% block content %}
-    <h1>{% trans "Sign Out" %}</h1>
-    <p>{% trans "Are you sure you want to sign out?" %}</p>
-    <form method="post" action="{% url 'account_logout' %}">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="/" />
-        <button type="submit">{% trans "Sign Out" %}</button>
-    </form>
+
+<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="row w-50 mx-auto secondary-colour secondary-text-colour rounded">
+        <div class="col-12">
+            <h1 class="text-center p-3 text-decoration-underline fw-bold">{% trans "Sign Out" %}</h1>
+        </div>
+        <div class="col-12">
+            <p class="text-center">{% trans "Are you sure you want to sign out?" %}</p>
+        </div>
+        <div class="col-12 p-3">
+            <form class="text-center" method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="/" />
+                <button class="btn btn-dark text-center" type="submit">{% trans "Sign Out" %}</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}
