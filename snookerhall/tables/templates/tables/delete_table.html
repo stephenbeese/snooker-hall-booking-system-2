@@ -5,16 +5,24 @@
 
 
 {% block content %}
-<h2 class="text-center py-3 text-decoration-underline fw-bold">Delete Table</h2>
-<h3 class="text-center py-3">Are you sure you want to delete table {{ table.table_number }}?</h3>
-
-<div class="row justify-content-evenly pb-3">
-  <div class="col-10">
-    <form method="post">
-      {% csrf_token %}
-      <button class="btn btn-dark" type="submit">Confirm</button>
-      <a href="{% url 'add_table' %}" class="btn btn-dark">Cancel</a>
-    </form>
+<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+  <div class="row w-50 mx-auto secondary-colour secondary-text-colour rounded">
+    <div class="col-12">
+      <h2 class="text-center py-3 text-decoration-underline fw-bold">Delete Table</h2>
+    </div>
+    <div class="col-12">
+      <h3 class="text-center py-3">
+        Are you sure you want to delete
+        <span class="fw-bold">Table {{ table.table_number }} - {{ table.table_type }}</span>
+      </h3>
+    </div>
+    <div class="col-12 text-center mb-3">
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-dark" type="submit">Confirm</button>
+        <a href="{% url 'add_table' %}" class="btn btn-dark">Cancel</a>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
