@@ -16,3 +16,9 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def save(self, *args, **kwargs):
+        # Capitalise the first letter and make the rest lowercase
+        self.first_name = self.first_name.capitalize()
+        self.last_name = self.last_name.capitalize()
+        super().save(*args, **kwargs)
