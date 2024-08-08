@@ -16,11 +16,3 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-
-# Signal to automatically create or update a profile whenever a User is created/updated
-# @receiver(post_save, sender=User)
-# def create_or_update_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         UserProfile.objects.create(user=instance)
-#     instance.userprofile.save()
