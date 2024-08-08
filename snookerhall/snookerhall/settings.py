@@ -146,6 +146,12 @@ ACCOUNT_SIGNUP_REDIRECT_URL = "/"  # Redirect to home page after sign up
 LOGIN_REDIRECT_URL = "/"  # Redirect to home page after login
 LOGOUT_REDIRECT_URL = "/"  # Redirect to home page after logout
 
+# Custom signup form
+ACCOUNT_FORMS = {
+    "signup": "profiles.forms.CustomSignupForm",
+}
+
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # NEED TO ADD REAL EMAIL FUNCTIONALITY!!!
 
