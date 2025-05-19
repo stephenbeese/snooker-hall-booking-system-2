@@ -22,3 +22,14 @@ class UserProfile(models.Model):
         self.first_name = self.first_name.capitalize()
         self.last_name = self.last_name.capitalize()
         super().save(*args, **kwargs)
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(
+            user=instance,
+            first_name=instance.first_name or "First",
+            last_name=instance.last_name or "Last",
+            phone_number="0000000000",
+        )

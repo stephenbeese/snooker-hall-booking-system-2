@@ -65,4 +65,4 @@ class Booking(models.Model):
         return uuid.uuid4().hex[:12].upper()
 
     def __str__(self):
-        return f"Booking by {self.name} on {self.date} from {self.start_time} to {self.end_time} at {self.table}"
+        return f"Booking by {self.name} on {self.date} from {self.start_time} to {self.end_time} at {self.table} - {self.booking_reference}"

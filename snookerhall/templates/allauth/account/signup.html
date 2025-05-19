@@ -1,15 +1,22 @@
 {% extends "account/base_entrance.html" %}
-{% load i18n %}
+{% load account i18n %}
 {% load crispy_forms_tags %}
 
 {% block title %}
-    {% trans "Sign Up" %}
+{% trans "Sign Up" %}
 {% endblock title %}
 
 {% block style_tag %}
 <style>
-    form ul, .invalid-feedback {
-        color: {{ club_details.secondary_text_colour }} !important;
+    form ul,
+    .invalid-feedback {
+        color: {
+                {
+                club_details.secondary_text_colour
+            }
+        }
+
+        !important;
     }
 
     p a:hover {
@@ -19,7 +26,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+<div
+    class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
     <div class="row w-75 mx-auto secondary-colour secondary-text-colour rounded justify-content-center">
         <div class="col-10">
             <h1 class="text-center text-decoration-underline fw-bold m-3">{% trans "Sign Up" %}</h1>
@@ -33,7 +41,7 @@
             <form method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
                 {% for field in form %}
-                    {{ field | as_crispy_field }}
+                {{ field | as_crispy_field }}
                 {% endfor %}
                 <button class="btn btn-dark mb-3" type="submit">{% trans "Sign Up" %}</button>
             </form>

@@ -1,18 +1,23 @@
 {% extends "account/base_entrance.html" %}
-{% load i18n %}
-{% load allauth account %}
+{% load account i18n %}
 {% load crispy_forms_tags %}
 
 
 
 {% block title %}
-    {% trans "Sign In" %}
+{% trans "Sign In" %}
 {% endblock title %}
 
 {% block style_tag %}
 <style>
     form a {
-        color: {{ club_details.secondary_text_colour }} !important;
+        color: {
+                {
+                club_details.secondary_text_colour
+            }
+        }
+
+        !important;
     }
 
     form a:hover {
@@ -27,21 +32,23 @@
 
 
 {% block content %}
-<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+<div
+    class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
     <div class="row w-50 mx-auto secondary-colour secondary-text-colour rounded justify-content-center">
         <div class="col-10 text-center">
             <h1 class="fw-bold text-decoration-underline p-3">{% trans "Sign In" %}</h1>
         </div>
         <div class="col-10">
             <p>
-                If you have not created an account yet, please <a class="secondary-text-colour link-hover" href="{% url 'account_signup' %}">sign up</a> first.
+                If you have not created an account yet, please <a class="secondary-text-colour link-hover"
+                    href="{% url 'account_signup' %}">sign up</a> first.
             </p>
         </div>
         <div class="col-10">
             <form method="post" action="{% url 'account_login' %}" class="entrance login secondary-text-colour mx-auto">
                 {% csrf_token %}
                 {% for field in form %}
-                    {{ field | as_crispy_field }}
+                {{ field | as_crispy_field }}
                 {% endfor %}
                 {{ redirect_field }}
                 <button class="btn btn-dark mb-3" type="submit" class="prominent login">{% trans "Sign In" %}</button>

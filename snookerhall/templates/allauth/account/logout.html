@@ -1,14 +1,15 @@
 {% extends "account/base_entrance.html" %}
-{% load allauth i18n %}
+{% load account i18n %}
 {% load i18n %}
 
 {% block title %}
-    Sign Out
+Sign Out
 {% endblock title %}
 
 {% block content %}
 
-<div class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
+<div
+    class="container-fluid primary-colour primary-text-colour d-flex flex-column justify-content-center align-items-center h-100">
     <div class="row w-50 mx-auto secondary-colour secondary-text-colour rounded">
         <div class="col-12">
             <h1 class="text-center p-3 text-decoration-underline fw-bold">{% trans "Sign Out" %}</h1>

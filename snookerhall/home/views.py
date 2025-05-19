@@ -7,7 +7,6 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from .forms import ClubDetailsForm, OpeningHoursForm
 from .models import ClubDetails, OpeningHours
-
 import logging
 
 logger = logging.getLogger(__name__)
