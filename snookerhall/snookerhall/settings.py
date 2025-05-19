@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "tables",
     "profiles",
     "booking",
+    "cart",
     # Crispy forms
     "crispy_forms",
     "crispy_bootstrap5",
