@@ -58,6 +58,11 @@ def book_table(request):
                     booking.table = table
                     booking.user = request.user
                     booking.save()
+                    # Booking success message
+                    messages.success(
+                        request,
+                        f"Booking successful! Table {table.table_number} for {game_type} on {date} at {start_time} for {duration} hours.",
+                    )
                     return redirect("booking_success")  # Redirect to the success page
 
             # If no available table could be booked (shouldn't reach here due to previous check)
