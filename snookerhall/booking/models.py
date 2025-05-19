@@ -36,10 +36,6 @@ class Booking(models.Model):
                 # Handle case where user has no profile
                 self.name = "Unknown User"
                 self.phone_number = "N/A"
-        #     self.name = (
-        #         self.user.userprofile.first_name + " " + self.user.userprofile.last_name
-        #     )
-        #     self.phone_number = self.userprofile.phone_number
 
         # Calculate duration or end_time if not provided
         if self.start_time and self.end_time:
