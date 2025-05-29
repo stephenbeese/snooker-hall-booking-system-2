@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Basket</h2>
+
+{% if cart_items %}
+<ul>
+    {% for item in cart_items %}
+    <li>
+        <strong>Table:</strong> {{ item.table }}<br>
+        <strong>Date:</strong> {{ item.date }}<br>
+        <strong>Time:</strong> {{ item.start_time }} - {{ item.end_time }}<br>
+        <strong>Duration:</strong> {{ item.duration }} hours<br>
+        <strong>Price:</strong> £{{ item.price }}
+    </li>
+    <hr>
+    {% endfor %}
+</ul>
+<p><strong>Total:</strong> £{{ total_price }}</p>
+{% else %}
+<p>Your basket is empty.</p>
+{% endif %}
+{% endblock %}

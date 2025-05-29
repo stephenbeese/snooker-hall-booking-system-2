@@ -5,12 +5,11 @@ from django.contrib.auth.models import User
 from tables.models import Table, TableType
 
 
-# Create your models here.
 class Cart(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     session_key = models.CharField(max_length=40, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    expires_at = models.DateTimeField
+    expires_at = models.DateTimeField()
 
     def is_expired(self):
         return timezone.now() > self.expires_at
@@ -18,6 +17,11 @@ class Cart(models.Model):
     def extend_expiration(self, minutes=15):
         self.expires_at = timezone.now() + timedelta(minutes=minutes)
         self.save()
+
+    def save(self, *args, **kwargs):
+        if not self.expires_at:
+            self.extend_expiration()
+        super().save(*args, **kwargs)
 
 
 class CartItem(models.Model):
@@ -35,4 +39,17 @@ class CartItem(models.Model):
         end_datetime = datetime.combine(self.date, self.start_time) + timedelta(
             hours=float(self.duration)
         )
-        self.end_time = end_datetime.time
+        self.end_time = end_datetime.time()
+
+    # def calculate_price(self):
+    #     item_price = self.table.price * self.duration
+    #     self.price = item_price
+
+    def save(self, *args, **kwargs):
+        if not self.end_time:
+            self.calculate_end_time()
+
+        # if not self.price:
+        #     self.calculate_price()
+
+        super().save(*args, **kwargs)
