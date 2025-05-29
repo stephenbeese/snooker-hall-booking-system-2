@@ -27,6 +27,7 @@ urlpatterns = [
     path("tables/", include("tables.urls")),
     path("profiles/", include("profiles.urls")),
     path("booking/", include("booking.urls")),
+    # path("cart/", include("cart.urls")),
 ]
 
 if settings.DEBUG:
