@@ -20,6 +20,8 @@ def get_user_cart(request):
 
 
 def view_cart(request):
+    Cart.objects.filter(expires_at__lt=timezone.now()).delete()
+
     cart = get_user_cart(request)
     cart_items = cart.items.all() if cart else []
     total_price = sum(item.price for item in cart_items)

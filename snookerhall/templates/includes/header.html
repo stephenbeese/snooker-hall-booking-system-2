@@ -1,76 +1,84 @@
 <header class="container-fluid header-colour">
   <div class="row">
+    {% if request.user.is_authenticated %}
     <div class="col-10">
-      <!-- CLUB LOGO -->
-      {% if club_details.display_logo %}
-      <img src="{{ club_details.logo.url }}" alt="{{ club_details.club_name }} Logo" class="logo d-inline" />
-      {% endif %}
-      <!-- CLUB NAME -->
-      {% if club_details.display_club_name %}
-      <h1 class="m-2 d-inline header-text-colour">{{ club_details.club_name }}</h1>
-      {% endif %}
-    </div>
-    <!-- ICONS -->
-    <div class="col-2 text-end">
-      <div class="m-3">
-        {% if request.user.is_authenticated %}
-        <div class="row align-items-end">
-          <!-- BASKET ICON -->
-          <div class="col-6">
-            <a href="{% url 'view_cart' %}" class="me-3 header-text-colour position-relative">
-              <i class="fa-solid fa-basket-shopping fa-2xl"></i>
-            </a>
-          </div>
+      {% else %}
+      <div class="col-8">
+        {% endif %}
 
-          <!-- ACCOUNT ICON -->
-          <div class="col-6">
-            <div class="dropdown">
-              <a class="fit-content header-text-colour" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-user fa-2xl"></i>
+        <!-- CLUB LOGO -->
+        {% if club_details.display_logo %}
+        <img src="{{ club_details.logo.url }}" alt="{{ club_details.club_name }} Logo" class="logo d-inline" />
+        {% endif %}
+        <!-- CLUB NAME -->
+        {% if club_details.display_club_name %}
+        <h1 class="m-2 d-inline header-text-colour">{{ club_details.club_name }}</h1>
+        {% endif %}
+      </div>
+      <!-- ICONS -->
+      {% if request.user.is_authenticated %}
+      <div class="col-2 text-end">
+        <div class="m-3">
+          <div class="row align-items-end">
+            <!-- BASKET ICON -->
+            <div class="col-6">
+              <a href="{% url 'view_cart' %}" class="me-3 header-text-colour position-relative">
+                <i class="fa-solid fa-basket-shopping fa-2xl"></i>
               </a>
+            </div>
 
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
-                <li><a class="dropdown-item" href="#">My Bookings</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                {% if request.user.is_superuser %}
-                <li><a class="dropdown-item" href="{% url 'edit_club_details' %}">Edit Club Details</a></li>
-                <li><a class="dropdown-item" href="{% url 'manage_opening_hours' %}">Edit Opening Times</a></li>
-                <li><a class="dropdown-item" href="{% url 'add_table_type' %}">Add Table Type</a></li>
-                <li><a class="dropdown-item" href="{% url 'add_table' %}">Add Table</a></li>
+            <!-- ACCOUNT ICON -->
+            <div class="col-6">
+              <div class="dropdown">
+                <a class="fit-content header-text-colour" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-user fa-2xl"></i>
+                </a>
 
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">My Bookings</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  {% if request.user.is_superuser %}
+                  <li><a class="dropdown-item" href="{% url 'edit_club_details' %}">Edit Club Details</a></li>
+                  <li><a class="dropdown-item" href="{% url 'manage_opening_hours' %}">Edit Opening Times</a></li>
+                  <li><a class="dropdown-item" href="{% url 'add_table_type' %}">Add Table Type</a></li>
+                  <li><a class="dropdown-item" href="{% url 'add_table' %}">Add Table</a></li>
+
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  {% endif %}
+                  <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+            {% else %}
+            <div class="col-4 text-end">
+              <div class="m-3">
+                <a href="{% url 'account_login' %}" class="header-text-colour">LOGIN</a>
+                <a href="{% url 'account_signup' %}" class="header-text-colour">SIGNUP</a>
                 {% endif %}
-                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-              </ul>
+              </div>
             </div>
           </div>
-          {% else %}
-          <a href="{% url 'account_login' %}" class="header-text-colour">LOGIN</a>
-          <a href="{% url 'account_signup' %}" class="header-text-colour">SIGNUP</a>
-          {% endif %}
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- NAV BAR -->
-  <nav>
-    <ul class="nav justify-content-center">
-      <li class="nav-item">
-        <a id="nav-item" class="nav-link active header-text-colour fs-4" aria-current="page"
-          href="{% url 'home' %}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a id="nav-item" class="nav-link nav-hover header-text-colour fs-4" href="{% url 'tables_view' %}">Tables</a>
-      </li>
-      <li class="nav-item">
-        <a id="nav-item" class="nav-link nav-hover header-text-colour fs-4" href="{% url 'book_table' %}">Book</a>
-      </li>
-    </ul>
-  </nav>
+        <!-- NAV BAR -->
+        <nav>
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a id="nav-item" class="nav-link active header-text-colour fs-4" aria-current="page"
+                href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-item" class="nav-link nav-hover header-text-colour fs-4"
+                href="{% url 'tables_view' %}">Tables</a>
+            </li>
+            <li class="nav-item">
+              <a id="nav-item" class="nav-link nav-hover header-text-colour fs-4" href="{% url 'book_table' %}">Book</a>
+            </li>
+          </ul>
+        </nav>
 </header>

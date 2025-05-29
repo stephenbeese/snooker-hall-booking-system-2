@@ -41,15 +41,7 @@ class CartItem(models.Model):
         )
         self.end_time = end_datetime.time()
 
-    # def calculate_price(self):
-    #     item_price = self.table.price * self.duration
-    #     self.price = item_price
-
     def save(self, *args, **kwargs):
         if not self.end_time:
             self.calculate_end_time()
-
-        # if not self.price:
-        #     self.calculate_price()
-
         super().save(*args, **kwargs)
